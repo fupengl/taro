@@ -93,9 +93,9 @@ export default class TaroLoadChunksPlugin {
                   Object.keys(assets).forEach(assetName => {
                     const fileName = path.basename(assetName, path.extname(assetName))
                     if (REG_STYLE.test(assetName) && this.commonChunks.includes(fileName)) {
-                      source.add(`@import ${JSON.stringify(urlToRequest(assetName))}`)
-                      source.add('\n')
                       source.add(_source)
+                      source.add('\n')
+                      source.add(`@import ${JSON.stringify(urlToRequest(assetName))}`)
                       if (assets[item]._source) {
                         assets[item]._source = source
                       } else {
